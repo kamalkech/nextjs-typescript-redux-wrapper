@@ -5,31 +5,31 @@ import { fetchPhoto, findPhoto } from "../../redux/actions/photoActions";
 import Link from "next/link";
 import Layout from "../../components/Layout";
 
+import { Button, Card, Container, Row, Col, Spinner } from "react-bootstrap";
+
 const DetailsPage = (props: any) => {
   return (
     <Layout title="Details | Next.js + TypeScript Example">
-      <h1>Details page</h1>
-      <hr />
-      {JSON.stringify(props.photos)}
-      <hr />
-      {props.photo ? JSON.stringify(props.photo) : <></>}
-
-      {props.photo ? (
-        <ul>
-          <li>{props.photo.id}</li>
-          <li>{props.photo.title}</li>
-          <li>
-            <img src={props.photo.thumbnailUrl} alt="" />
-          </li>
-        </ul>
-      ) : (
-        <></>
-      )}
-
-      <hr />
-      <Link href="/photos">
-        <a>Go to photos</a>
-      </Link>
+      <Container fluid="md" className="mt-4 mb-4">
+        <Row>
+          <Col xs={3} md={3} className="mb-4">
+            <Card>
+              <Card.Header>Details</Card.Header>
+              <Card.Body>
+                <Card.Title>{props.photo.title}</Card.Title>
+                <Card.Img variant="top" src={props.photo.thumbnailUrl} />
+              </Card.Body>
+              <Card.Footer className="text-muted">
+                <Link href="/photos">
+                  <a>
+                    <Button variant="danger">Go to photos</Button>
+                  </a>
+                </Link>
+              </Card.Footer>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 };
@@ -42,24 +42,8 @@ const mapDispatchToProps = (dispatch: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  photos: state.photo.photos,
   photo: state.photo.photo,
 });
-
-// export const getStaticProps: GetStaticProps = async ({
-//   params,
-//   store,
-// }: any) => {
-//   try {
-//     const id = params?.id;
-//     store.dispatch(fetchPhoto(id));
-//     // By returning { props: item }, the StaticPropsDetail component
-//     // will receive `item` as a prop at build time
-//     return {};
-//   } catch (err) {
-//     return { props: { errors: err.message } };
-//   }
-// };
 
 DetailsPage.getInitialProps = async (props: any) => {
   const state = props.store.getState();

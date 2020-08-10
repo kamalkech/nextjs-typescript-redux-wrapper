@@ -17,6 +17,12 @@ import thunkMiddleware from "redux-thunk";
 // Store.
 import combinedReducer from "../redux/reducers/rootReducer";
 
+// Bootstrap.
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// Tailwind css.
+import "../styles.css";
+
 // Component App.
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
@@ -29,7 +35,10 @@ const bindMiddleware = (middleware: any) => {
     // Create loggerMiddleware.
     const loggerMiddleware = createLogger();
     return composeWithDevTools(
-      applyMiddleware(...middleware, loggerMiddleware)
+      applyMiddleware(
+        ...middleware
+        // loggerMiddleware
+      )
     );
   }
   return applyMiddleware(...middleware);

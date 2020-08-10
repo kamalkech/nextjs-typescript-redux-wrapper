@@ -1,38 +1,38 @@
 import {
-  FETCH_PHOTOS,
-  FETCH_PHOTO,
-  FIND_PHOTO,
+  FETCH_MOVIES,
+  FETCH_MOVIE,
+  FIND_MOVIE,
   SET_LOADING,
   LOGS_ERROR,
-} from "../actions/photoActions";
+} from "../actions/movieActions";
 
 const initialState = {
-  photos: [],
-  photo: null,
+  movies: [],
+  movie: null,
   loading: false,
   error: null,
 };
 
-const photoReducer = (state = initialState, action: any) => {
+const movieReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case FETCH_PHOTOS:
+    case FETCH_MOVIES:
       return {
         ...state,
-        photos: action.payload,
+        movies: action.payload,
         loading: false,
       };
-    case FETCH_PHOTO:
+    case FETCH_MOVIE:
       return {
         ...state,
-        photo: action.payload,
+        movie: action.payload,
         loading: false,
       };
-    case FIND_PHOTO:
-      const photos = state.photos;
-      const photo = photos.filter((p: any) => p.id == action.payload);
+    case FIND_MOVIE:
+      const movies = state.movies;
+      const movie = movies.filter((p: any) => p.id == action.payload);
       return {
         ...state,
-        photo: photo[0],
+        movie: movie[0],
       };
     case SET_LOADING:
       return {
@@ -50,4 +50,4 @@ const photoReducer = (state = initialState, action: any) => {
   }
 };
 
-export default photoReducer;
+export default movieReducer;

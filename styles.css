@@ -1,0 +1,19 @@
+/* purgecss start ignore */
+/* @tailwind base;
+@tailwind components; */
+/* purgecss end ignore */
+
+/* @tailwind utilities; */
+
+#nprogress .bar {
+  background: #f81ce6;
+  height: 5px;
+}
+
+footer {
+  background: black;
+}
+
+Card {
+  max-height: 100px;
+}
