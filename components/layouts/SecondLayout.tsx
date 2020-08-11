@@ -14,9 +14,20 @@ const SecondLayout = ({ children, title = "Second Layout" }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header>
-      <h1>Second Layout</h1>
+      <h2>Second Layout</h2>
     </header>
     {children}
+    <div className="container">
+      <div className="row">
+        <div className="col-sm">
+          One of three columns
+        </div>
+
+        <div className="col-sm">
+          One of three columns
+        </div>
+      </div>
+    </div>
     <footer className="footer mt-auto py-3">
       <div className="container">
         <span className="text-muted">
@@ -24,6 +35,16 @@ const SecondLayout = ({ children, title = "Second Layout" }: Props) => (
         </span>
       </div>
     </footer>
+    <style jsx>
+      {`
+        .col-sm {
+          padding-top: .75rem;
+          padding-bottom: .75rem;
+          background-color: rgba(86,61,124,.15);
+          border: 1px solid rgba(86,61,124,.2);
+        }
+      `}
+    </style>
   </div>
 );
 

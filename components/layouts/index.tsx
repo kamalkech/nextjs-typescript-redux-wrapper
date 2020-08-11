@@ -1,8 +1,13 @@
-import React from "react";
+import { ReactNode } from "react";
 import FirstLayout from "./FirstLayout";
 import SecondLayout from "./SecondLayout";
 
-const Layout = ({ layout_id }: any) => {
+type Props = {
+  children?: ReactNode;
+  layout_id: number;
+};
+
+const Layout = ({ children, layout_id }: Props) => {
   const renderLayout = () => {
     switch (layout_id) {
       case 1:
@@ -15,7 +20,10 @@ const Layout = ({ layout_id }: any) => {
     }
   };
 
-  return <>{renderLayout()}</>;
+  return <>
+    {children}
+    {renderLayout()}
+  </>;
 };
 
 export default Layout;
