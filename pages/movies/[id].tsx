@@ -10,36 +10,39 @@ import { Button, Card, Container, Row, Col } from "react-bootstrap";
 const DetailsPage = (props: any) => {
   return (
     <Layout title="Details | Next.js + TypeScript Example">
-      <Container fluid="md" className="mt-4 mb-4">
-        <Row>
-          <Col xs={12} md={12} className="mb-4">
-            <Card>
-              <Card.Header>Details</Card.Header>
-              <Card.Body>
-                <Row>
-                  <Col xs={3} md={3}>
-                    <Card.Title>{props.movie.original_title}</Card.Title>
-                    <Card.Img
-                      variant="top"
+      <div className="container fluid mt-4 mb-4">
+        <div className="row">
+          <div className="col-md-12 mb-4">
+            <div className="card">
+              <div className="card-header">Details</div>
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-md-3">
+                    <h5 className="card-title text-truncate">
+                      {props.movie.original_title}
+                    </h5>
+                    <img
                       src={`https://image.tmdb.org/t/p/w300/${props.movie.poster_path}`}
+                      className="card-img-top"
+                      alt={props.movie.original_title}
                     />
-                  </Col>
-                  <Col xs={6} md={6} className="mt-4">
+                  </div>
+                  <div className="col-md-9 mt-4">
                     <p>{props.movie.overview}</p>
-                  </Col>
-                </Row>
-              </Card.Body>
-              <Card.Footer className="text-muted">
+                  </div>
+                </div>
+              </div>
+              <div className="card-footer text-muted">
                 <Link href="/movies">
                   <a>
-                    <Button variant="danger">Go to movies</Button>
+                    <button className="btn btn-danger">Go to movies</button>
                   </a>
                 </Link>
-              </Card.Footer>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

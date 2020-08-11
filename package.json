@@ -25,6 +25,7 @@
     "@types/node": "^12.12.21",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^16.9.16",
+    "@types/react-bootstrap": "^0.32.22",
     "@types/react-dom": "^16.9.4",
     "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8",

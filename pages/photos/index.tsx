@@ -6,19 +6,17 @@ import { fetchPhotos } from "../../redux/actions/photoActions";
 
 import Layout from "../../components/Layout";
 
-import { Button, Card, Container, Row, Col, Spinner } from "react-bootstrap";
-
 const IndexPage = (props: any) => {
   const [fetch, setFetch] = useState(false);
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <Container fluid="md" className="mt-2 mb-4">
-        <Row>
-          <Col className="text-center">
+      <div className="container fluid mt-2 mb-4">
+        <div className="row">
+          <div className="col-md-12 text-center">
             <h1>List Photos</h1>
             <hr />
-            <Button
-              variant="dark"
+            <button
+              className="btn btn-dark"
               onClick={async (e) => {
                 e.stopPropagation();
                 const limit = fetch || props.photos.length > 4 ? 4 : 12;
@@ -27,43 +25,42 @@ const IndexPage = (props: any) => {
               }}
             >
               {props.loading ? (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                  className="mr-1"
-                />
+                <div className="spinner-border mr-1" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
               ) : props.photos.length > 4 ? (
                 `Reset`
               ) : (
                 `Fetch 12 items`
               )}
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid="md">
-        <Row>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="container fluid">
+        <div className="row">
           {props.photos &&
             props.photos.map((p: any, idx: number) => (
-              <Col key={idx} xs={3} md={3} className="mb-4">
-                <Card>
-                  <Card.Img variant="top" src={p.thumbnailUrl} />
-                  <Card.Body className="text-center">
-                    <Card.Title className="text-truncate">{p.title}</Card.Title>
+              <div key={idx} className="col-md-3 mb-4">
+                <div className="card">
+                  <img
+                    src={p.thumbnailUrl}
+                    className="card-img-top"
+                    alt={p.title}
+                  />
+                  <div className="card-body text-center">
+                    <h5 className="card-title text-truncate">{p.title}</h5>
                     <Link href="/photos/[id]" as={`/photos/${p.id}`}>
                       <a>
-                        <Button variant="dark">Details</Button>
+                        <button className="btn btn-dark">Details</button>
                       </a>
                     </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
+                  </div>
+                </div>
+              </div>
             ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </Layout>
   );
 };

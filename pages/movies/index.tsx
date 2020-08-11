@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -6,43 +5,42 @@ import { fetchMovies } from "../../redux/actions/movieActions";
 
 import Layout from "../../components/Layout";
 
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
-
 const IndexPage = (props: any) => {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <Container fluid="md" className="mt-2 mb-4">
-        <Row>
-          <Col className="text-center">
+      <div className="container fluid mt-2 mb-4">
+        <div className="row">
+          <div className="col-md-12 text-center">
             <h1>List movies</h1>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid="md">
-        <Row>
+          </div>
+        </div>
+      </div>
+      <div className="container fluid">
+        <div className="row">
           {props.movies &&
             props.movies.map((m: any, idx: number) => (
-              <Col key={idx} xs={3} md={3} className="mb-4">
-                <Card>
-                  <Card.Img
-                    variant="top"
+              <div key={idx} className="col-md-3 mb-4">
+                <div className="card">
+                  <img
                     src={`https://image.tmdb.org/t/p/w300/${m.poster_path}`}
+                    className="card-img-top"
+                    alt={m.original_title}
                   />
-                  <Card.Body className="text-center">
-                    <Card.Title className="text-truncate">
+                  <div className="card-body text-center">
+                    <h5 className="card-title text-truncate">
                       {m.original_title}
-                    </Card.Title>
+                    </h5>
                     <Link href="/movies/[id]" as={`/movies/${m.id}`}>
                       <a>
-                        <Button variant="dark">Details</Button>
+                        <button className="btn btn-dark">Details</button>
                       </a>
                     </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
+                  </div>
+                </div>
+              </div>
             ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </Layout>
   );
 };

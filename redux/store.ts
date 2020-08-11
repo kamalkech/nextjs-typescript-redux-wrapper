@@ -11,7 +11,10 @@ const bindMiddleware = (middleware: any) => {
     // Create loggerMiddleware.
     const loggerMiddleware = createLogger();
     return composeWithDevTools(
-      applyMiddleware(...middleware, loggerMiddleware)
+      applyMiddleware(
+        ...middleware
+        // loggerMiddleware
+      )
     );
   }
   return applyMiddleware(...middleware);

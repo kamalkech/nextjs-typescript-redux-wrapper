@@ -5,31 +5,35 @@ import { fetchPhoto, findPhoto } from "../../redux/actions/photoActions";
 import Link from "next/link";
 import Layout from "../../components/Layout";
 
-import { Button, Card, Container, Row, Col, Spinner } from "react-bootstrap";
-
 const DetailsPage = (props: any) => {
   return (
     <Layout title="Details | Next.js + TypeScript Example">
-      <Container fluid="md" className="mt-4 mb-4">
-        <Row>
-          <Col xs={3} md={3} className="mb-4">
-            <Card>
-              <Card.Header>Details</Card.Header>
-              <Card.Body>
-                <Card.Title>{props.photo.title}</Card.Title>
-                <Card.Img variant="top" src={props.photo.thumbnailUrl} />
-              </Card.Body>
-              <Card.Footer className="text-muted">
+      <div className="container fluid mt-4 mb-4">
+        <div className="row">
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-header">Details</div>
+              <div className="card-body text-center">
+                <h5 className="card-title text-truncate">
+                  {props.photo.title}
+                </h5>
+                <img
+                  src={props.photo.thumbnailUrl}
+                  className="card-img-top"
+                  alt={props.photo.title}
+                />
+              </div>
+              <div className="card-footer text-muted">
                 <Link href="/photos">
                   <a>
-                    <Button variant="danger">Go to photos</Button>
+                    <button className="btn btn-danger">Go to photos</button>
                   </a>
                 </Link>
-              </Card.Footer>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };
